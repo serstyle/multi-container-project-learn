@@ -7,10 +7,10 @@ before_install:
 script: 
   - docker run -e CI=true fdesobry/react-test npm run test
 after_success: 
-  - docker build fdesobry/multi-client ./client
-  - docker build fdesobry/multi-server ./server
-  - docker build fdesobry/multi-nginx ./nginx
-  - docker build fdesobry/multi-worker ./worker
+  - docker build -t fdesobry/multi-client ./client
+  - docker build -t fdesobry/multi-server ./server
+  - docker build -t fdesobry/multi-nginx ./nginx
+  - docker build -t fdesobry/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push fdesobry/multi-client
   - docker push fdesobry/multi-server
