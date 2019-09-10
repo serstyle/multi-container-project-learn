@@ -5,7 +5,7 @@ services:
 before_install: 
   - docker build -t fdesobry/react-test -f ./client/Dockerfile.dev ./client
 script: 
-  - docker run -r CI=true fdesobry/react-test npm test
+  - docker run -r CI=true fdesobry/react-test npm run test
 
 after_success: 
   - docker build fdesobry/multi-client ./client
